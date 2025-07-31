@@ -1,0 +1,187 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "search": "Search",
+    "reset": "Reset",
+    "refresh": "Refresh",
+    "close": "Close",
+    "manage": "Manage",
+    "settings": "Settings",
+    "comingSoon": "Coming Soon"
+  },
+  "auth": {
+    "register": {
+      "title": "User Registration",
+      "username": "Username",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "captcha": "Captcha",
+      "submitButton": "Register",
+      "loginLink": "Already have an account? Sign in",
+      "success": "Registration successful, please check your email to activate your account!",
+      "failed": "Registration failed, please try again"
+    },
+    "login": {
+      "title": "User Login",
+      "username": "Username",
+      "password": "Password",
+      "captcha": "Captcha",
+      "submitButton": "Login",
+      "registerLink": "Don't have an account? Sign up",
+      "success": "Login successful!",
+      "failed": "Login failed, please check your credentials or network",
+      "tokenMissing": "Missing tokens in login response"
+    },
+    "activate": {
+      "title": "Account Activation",
+      "activating": "Activating your account...",
+      "success": "Account activation successful!",
+      "successSubtitle": "Your account has been successfully activated, you can now login.",
+      "failed": "Account activation failed",
+      "failedSubtitle": "The activation link may have expired or is invalid",
+      "loginButton": "Login Now",
+      "registerButton": "Register Again",
+      "backToLogin": "Back to Login"
+    },
+    "logout": {
+      "button": "Logout",
+      "success": "Logout successful",
+      "failed": "Logout failed"
+    }
+  },
+  "validation": {
+    "required": {
+      "username": "Please enter username",
+      "email": "Please enter email",
+      "password": "Please enter password",
+      "confirmPassword": "Please confirm your password",
+      "captcha": "Please enter captcha"
+    },
+    "format": {
+      "email": "Please enter a valid email address",
+      "usernameLength": "Username length must be between 4 and 20 characters",
+      "passwordLength": "Password length must be between 6 and 30 characters",
+      "passwordMismatch": "The two passwords do not match"
+    }
+  },
+  "error": {
+    "title": "Error",
+    "captchaLoadFailed": "Failed to load captcha",
+    "networkError": "Network error, please check your network connection",
+    "serverError": "Server error, please try again later",
+    "unknownError": "Unknown error, please try again",
+    "validationError": "Parameter validation failed",
+    "invalidCaptcha": "Invalid captcha",
+    "ipLimitExceeded": "Too many requests, please try again later",
+    "userAlreadyExists": "Username already exists",
+    "emailAlreadyExists": "Email already registered",
+    "userNotActivated": "Account not activated, please check your email for activation",
+    "badCredentials": "Invalid username or password",
+    "authenticationError": "Authentication failed",
+    "authorizationError": "Access denied",
+    "notFound": "Resource not found",
+    "internalError": "Internal system error",
+    "invalidToken": "Invalid activation link",
+    "tokenExpired": "Activation link expired"
+  },
+  "message": {
+    "redirecting": "Redirecting...",
+    "pleaseWait": "Please wait..."
+  },
+  "app": {
+    "title": "OAuth Authorization System",
+    "footer": "©2024 OAuth Server"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome to the dashboard. You can manage users, clients, etc. here.",
+    "userManagement": "User Management",
+    "clientManagement": "Client Management",
+    "systemSettings": "System Settings",
+    "menu": {
+      "home": "Home",
+      "userManagement": "User Management",
+      "clientManagement": "Client Management",
+      "system": "System",
+      "settings": "Settings",
+      "auditLog": "Audit Log"
+    }
+  },
+  "user": {
+    "profile": "Profile",
+    "settings": "Settings",
+    "roles": "Roles",
+    "username": "Username",
+    "email": "Email",
+    "status": "Status",
+    "enabled": "Enabled"
+  },
+  "actions": {
+    "title": "Actions",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "admin": {
+    "userManagement": {
+      "title": "User Management",
+      "searchPlaceholder": "Search by username or email...",
+      "searchButton": "Search",
+      "createUser": "Create User"
+    },
+    "users": {
+      "title": "User Management",
+      "list": "User List",
+      "create": "Create User",
+      "edit": "Edit User",
+      "detail": "User Details",
+      "search": "Search Users",
+      "filter": "Filter",
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive",
+        "disabled": "Disabled",
+        "all": "All Status"
+      },
+      "actions": {
+        "activate": "Activate",
+        "disable": "Disable",
+        "resetPassword": "Reset Password",
+        "assignRoles": "Assign Roles",
+        "batchUpdate": "Batch Operations",
+        "view": "View",
+        "edit": "Edit",
+        "delete": "Delete"
+      },
+      "fields": {
+        "id": "ID",
+        "username": "Username",
+        "email": "Email",
+        "status": "Status",
+        "roles": "Roles",
+        "createdAt": "Created At",
+        "updatedAt": "Updated At",
+        "lastLoginAt": "Last Login",
+        "loginCount": "Login Count",
+        "enabled": "Enabled"
+      },
+      "messages": {
+        "updateSuccess": "User information updated successfully",
+        "statusUpdateSuccess": "User status updated successfully",
+        "passwordResetSuccess": "Password reset successfully",
+        "batchUpdateSuccess": "Batch update successful: {0}/{1} users",
+        "deleteConfirm": "Are you sure you want to delete user {0}?",
+        "batchDeleteConfirm": "Are you sure you want to delete {0} selected users?"
+      }
+    }
+  }
+}

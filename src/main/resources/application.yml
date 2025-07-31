@@ -1,0 +1,51 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/oauth2_dev
+    username: postgres
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  application:
+    name: oauth-authorization-server
+  mail:
+    host: smtp.qq.com # 例如 smtp.example.com
+    port: 587 # 或 456
+    username: 945460266@qq.com # 您的邮箱地址
+    password: 'phglrqxfjvqabdjf' # 您的邮箱密码或应用专用密码
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    test-connection: true
+  task:
+    scheduling:
+          enabled: true
+
+app:
+  base-url: http://localhost:8080
+  auth:
+    default-role: USER
+    max-login-attempts: 5
+  jwt:
+    secret: myVerySecretKeyForJWTTokenGenerationThatIsLongEnough
+    access-token-expiration: 3600  # 1小时
+    refresh-token-expiration: 604800  # 7天
+    issuer: oauth-authorization-server
+
+# 启用定时任务
+
+logging:
+  level:
+    org.springframework: info
+    com.daem.oauth: debug

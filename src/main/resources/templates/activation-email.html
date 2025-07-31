@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>账户激活</title>
+    <style>
+        .container {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>您好, <span th:text="${username}"></span>!</h3>
+        <p>感谢您注册我们的服务。请点击下方的按钮来激活您的账户：</p>
+        <p>
+            <a th:href="${activationLink}" class="button">激活账户</a>
+        </p>
+        <p>如果按钮无法点击，您也可以将以下链接复制到浏览器地址栏中打开：</p>
+        <p>
+            <a th:href="${activationLink}" th:text="${activationLink}"></a>
+        </p>
+        <p>请注意：此激活链接将在24小时内失效。</p>
+        <div class="footer">
+            <p>此邮件为系统自动发送，请勿直接回复。</p>
+        </div>
+    </div>
+</body>
+</html>
