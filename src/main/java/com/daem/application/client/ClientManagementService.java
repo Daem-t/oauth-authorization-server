@@ -1,10 +1,11 @@
-package com.daem.application;
+package com.daem.application.client;
 
-import com.daem.application.dto.ClientDto;
+import com.daem.application.client.dto.ClientDto;
+import com.daem.domain.client.ClientRepository;
+import com.daem.application.exception.ClientNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
-import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository; // Correct import
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,42 +16,43 @@ import java.util.stream.Collectors;
 @Service
 public class ClientManagementService {
 
-    private final RegisteredClientRepository registeredClientRepository; // Correct type
+    private final ClientRepository clientRepository; // Changed type
     private final PasswordEncoder passwordEncoder;
 
-    public ClientManagementService(RegisteredClientRepository registeredClientRepository, PasswordEncoder passwordEncoder) {
-        this.registeredClientRepository = registeredClientRepository;
+    public ClientManagementService(ClientRepository clientRepository, PasswordEncoder passwordEncoder) { // Changed constructor
+        this.clientRepository = clientRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Transactional
     public void create(ClientDto clientDto) {
         RegisteredClient registeredClient = toRegisteredClient(clientDto);
-        registeredClientRepository.save(registeredClient);
+        clientRepository.save(registeredClient);
     }
 
     @Transactional(readOnly = true)
     public List<ClientDto> findAll() {
-        // This call will now correctly resolve to RegisteredClientRepositoryAdapter's findAll()
-        return ((com.daem.infrastructure.repository.RegisteredClientRepositoryAdapter) registeredClientRepository).findAll().stream().map(this::toDto).collect(Collectors.toList());
+        return clientRepository.findAll().stream().map(this::toDto).collect(Collectors.toList());
     }
 
     @Transactional
     public void update(ClientDto clientDto) {
-        RegisteredClient existingClient = registeredClientRepository.findByClientId(clientDto.clientId());
+        RegisteredClient existingClient = clientRepository.findByClientId(clientDto.clientId());
         if (existingClient == null) {
-            // Or throw an exception
-            return;
+            throw new ClientNotFoundException("Client with client ID " + clientDto.clientId() + " not found.");
         }
         // Create a new client with the updated details
         RegisteredClient updatedClient = toRegisteredClient(clientDto, existingClient.getId());
-        registeredClientRepository.save(updatedClient);
+        clientRepository.save(updatedClient);
     }
 
     @Transactional
     public void delete(String clientId) {
-        // This call will now correctly resolve to RegisteredClientRepositoryAdapter's deleteByClientId()
-        ((com.daem.infrastructure.repository.RegisteredClientRepositoryAdapter) registeredClientRepository).deleteByClientId(clientId);
+        RegisteredClient existingClient = clientRepository.findByClientId(clientId);
+        if (existingClient == null) {
+            throw new com.daem.application.exception.ClientNotFoundException("Client with client ID " + clientId + " not found.");
+        }
+        clientRepository.deleteByClientId(clientId);
     }
 
     private RegisteredClient toRegisteredClient(ClientDto clientDto, String id) {

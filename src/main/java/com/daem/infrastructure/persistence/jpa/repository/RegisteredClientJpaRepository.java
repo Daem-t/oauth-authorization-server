@@ -1,6 +1,6 @@
-package com.daem.domain;
+package com.daem.infrastructure.persistence.jpa.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.daem.infrastructure.persistence.jpa.entity.RegisteredClientEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

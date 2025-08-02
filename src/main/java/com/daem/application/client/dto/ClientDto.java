@@ -1,4 +1,4 @@
-package com.daem.application.dto;
+package com.daem.application.client.dto;
 
 import java.util.Set;
 

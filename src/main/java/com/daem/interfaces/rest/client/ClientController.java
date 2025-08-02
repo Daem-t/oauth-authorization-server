@@ -1,7 +1,8 @@
-package com.daem.interfaces.rest;
+package com.daem.interfaces.rest.client;
 
-import com.daem.application.ClientManagementService;
-import com.daem.application.dto.ClientDto;
+import com.daem.application.client.ClientManagementService;
+import com.daem.application.client.dto.ClientDto;
+import com.daem.application.exception.ClientIdMismatchException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +28,7 @@ public class ClientController {
     public void update(@PathVariable String clientId, @RequestBody ClientDto clientDto) {
         // Ensure the client ID in the path matches the one in the body
         if (!clientId.equals(clientDto.clientId())) {
-            throw new IllegalArgumentException("Client ID in path does not match client ID in body");
+            throw new ClientIdMismatchException("Client ID in path does not match client ID in body"); // Throws custom exception
         }
         clientManagementService.update(clientDto);
     }

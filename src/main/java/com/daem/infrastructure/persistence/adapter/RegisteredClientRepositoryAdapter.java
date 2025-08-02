@@ -1,7 +1,7 @@
-package com.daem.infrastructure.repository;
+package com.daem.infrastructure.persistence.adapter;
 
-import com.daem.domain.RegisteredClientEntity;
-import com.daem.domain.RegisteredClientJpaRepository;
+import com.daem.infrastructure.persistence.jpa.entity.RegisteredClientEntity;
+import com.daem.infrastructure.persistence.jpa.repository.RegisteredClientJpaRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,7 +24,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Component
-public class RegisteredClientRepositoryAdapter implements RegisteredClientRepository {
+public class RegisteredClientRepositoryAdapter implements com.daem.domain.client.ClientRepository {
 
     private final RegisteredClientJpaRepository registeredClientJpaRepository;
     private final ObjectMapper objectMapper; // Changed to be injected

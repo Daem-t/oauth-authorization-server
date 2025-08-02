@@ -1,6 +1,7 @@
 package com.daem.infrastructure.config;
 
-import com.daem.infrastructure.repository.RegisteredClientRepositoryAdapter;
+import com.daem.domain.client.ClientRepository;
+import com.daem.infrastructure.persistence.adapter.RegisteredClientRepositoryAdapter;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;
@@ -52,7 +53,7 @@ public class AuthorizationServerConfig {
 
     @Bean
     @Primary
-    public RegisteredClientRepository registeredClientRepository(RegisteredClientRepositoryAdapter registeredClientRepositoryAdapter) {
+    public ClientRepository registeredClientRepository(RegisteredClientRepositoryAdapter registeredClientRepositoryAdapter) {
         return registeredClientRepositoryAdapter;
     }
 
