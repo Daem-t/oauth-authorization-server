@@ -20,6 +20,7 @@ public class SecurityConfig {
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/api/**").hasAuthority("SCOPE_server.admin")
                         .anyRequest().authenticated()
                 )
                 .formLogin(withDefaults());
